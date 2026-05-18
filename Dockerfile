@@ -10,7 +10,8 @@ RUN go mod download
 COPY . .
 
 # web/dist is not in repo by default, so build without embedded web assets.
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
+# Build for the current container platform to avoid exec format mismatch.
+RUN CGO_ENABLED=0 \
     go build -tags no_web -o /out/cc-connect ./cmd/cc-connect
 
 
