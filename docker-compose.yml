@@ -22,7 +22,6 @@ services:
       - type: bind
         source: ${HOST_CODEX_HOME}
         target: /root/.codex
-    # Optional: expose web admin / bridge when enabled in config.toml.
-    # ports:
-    #   - "9820:9820"  # management API / web admin
-    #   - "9810:9810"  # bridge websocket
+    ports:
+      - "9820:9820"  # management API / web admin
+      - "9810:9810"  # bridge websocket

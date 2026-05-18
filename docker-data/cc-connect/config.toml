@@ -3,6 +3,17 @@ language = "zh"
 [log]
 level = "debug"
 
+[management]
+enabled = true
+port = 9820
+token = "CHANGE_ME_MANAGEMENT_TOKEN"
+
+[bridge]
+enabled = true
+port = 9810
+token = "CHANGE_ME_BRIDGE_TOKEN"
+path = "/bridge/ws"
+
 [[projects]]
 name = "codex-docker"
 

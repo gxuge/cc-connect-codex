@@ -1,5 +1,18 @@
 # syntax=docker/dockerfile:1.7
 
+FROM node:22-bookworm-slim AS webbuilder
+
+WORKDIR /src/web
+
+RUN npm install -g pnpm
+
+COPY web/package.json web/pnpm-lock.yaml web/pnpm-workspace.yaml web/.pnpmrc.json ./
+RUN pnpm install --frozen-lockfile
+
+COPY web/ ./
+RUN pnpm run build
+
+
 FROM golang:1.25-bookworm AS builder
 
 WORKDIR /src
@@ -9,10 +22,12 @@ RUN go mod download
 
 COPY . .
 
-# web/dist is not in repo by default, so build without embedded web assets.
+# Build web assets and embed them into the binary.
+COPY --from=webbuilder /src/web/dist /src/web/dist
+
 # Build for the current container platform to avoid exec format mismatch.
 RUN CGO_ENABLED=0 \
-    go build -tags no_web -o /out/cc-connect ./cmd/cc-connect
+    go build -o /out/cc-connect ./cmd/cc-connect
 
 
 FROM node:22-bookworm-slim AS runtime
