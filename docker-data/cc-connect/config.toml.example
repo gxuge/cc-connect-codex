@@ -1,0 +1,30 @@
+language = "zh"
+
+[log]
+level = "info"
+
+[[projects]]
+name = "codex-docker"
+
+[projects.agent]
+type = "codex"
+
+[projects.agent.options]
+work_dir = "/workspace/project"
+mode = "suggest"
+codex_home = "/root/.codex"
+# model = "gpt-5.5"
+# reasoning_effort = "medium"
+
+[[projects.agent.providers]]
+name = "openai"
+api_key = "${OPENAI_API_KEY}"
+
+[[projects.platforms]]
+type = "feishu"
+
+[projects.platforms.options]
+app_id = "REPLACE_WITH_FEISHU_APP_ID"
+app_secret = "REPLACE_WITH_FEISHU_APP_SECRET"
+# domain = "https://open.feishu.cn"
+# enable_feishu_card = true

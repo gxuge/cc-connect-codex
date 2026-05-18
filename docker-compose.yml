@@ -1,0 +1,29 @@
+services:
+  cc-connect-codex:
+    container_name: cc-connect-codex
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CODEX_CLI_VERSION: ${CODEX_CLI_VERSION:-latest}
+    image: cc-connect-codex:local
+    init: true
+    restart: unless-stopped
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      CODEX_HOME: /root/.codex
+      TZ: ${TZ:-Asia/Shanghai}
+    volumes:
+      - type: bind
+        source: ./docker-data/cc-connect
+        target: /root/.cc-connect
+      - type: bind
+        source: ${HOST_PROJECT_DIR}
+        target: /workspace/project
+      - type: bind
+        source: ${HOST_CODEX_HOME}
+        target: /root/.codex
+    # Optional: expose web admin / bridge when enabled in config.toml.
+    # ports:
+    #   - "9820:9820"  # management API / web admin
+    #   - "9810:9810"  # bridge websocket

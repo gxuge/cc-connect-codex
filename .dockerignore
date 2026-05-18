@@ -1,0 +1,12 @@
+.git
+.github
+.claude
+
+dist
+web/node_modules
+web/dist
+
+*.log
+*.tmp
+*.swp
+*.swo
