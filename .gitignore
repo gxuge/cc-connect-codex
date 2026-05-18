@@ -45,6 +45,10 @@ config.*.toml
 
 # CC-Connect runtime state
 .cc-connect/
+docker-data/cc-connect/.config.toml.lock
+docker-data/cc-connect/dir_history.json
+docker-data/cc-connect/sessions/
+docker-data/cc-connect/run/
 
 # npm / pnpm (for npm package distribution and web admin)
 .npmrc
