@@ -1,0 +1,51 @@
+{
+  "sessions": {
+    "s1": {
+      "id": "s1",
+      "name": "default",
+      "agent_session_id": "019dd784-409a-7213-9e45-343221ca2316",
+      "agent_type": "codex",
+      "history": [
+        {
+          "role": "user",
+          "content": "你好",
+          "timestamp": "2026-04-29T12:34:16.029363709+08:00"
+        },
+        {
+          "role": "assistant",
+          "content": "你好，需要我帮你做什么？",
+          "timestamp": "2026-04-29T12:34:56.193770076+08:00"
+        },
+        {
+          "role": "user",
+          "content": "帮我生成一张图，介绍github某个项目，作为一般的模板",
+          "timestamp": "2026-04-29T17:54:43.042585767+08:00"
+        },
+        {
+          "role": "assistant",
+          "content": "(空响应)",
+          "timestamp": "2026-04-29T17:57:00.995492038+08:00"
+        }
+      ],
+      "created_at": "2026-04-29T12:23:28.81098221+08:00",
+      "updated_at": "2026-04-29T12:34:57.153421378+08:00"
+    }
+  },
+  "active_session": {
+    "feishu:oc_fd2ea7325bfa6d9b441f36da2269f341:ou_fb03ecb0a093710baa92b6b98e1e805b": "s1"
+  },
+  "user_sessions": {
+    "feishu:oc_fd2ea7325bfa6d9b441f36da2269f341:ou_fb03ecb0a093710baa92b6b98e1e805b": [
+      "s1"
+    ]
+  },
+  "counter": 1,
+  "user_meta": {
+    "feishu:oc_fd2ea7325bfa6d9b441f36da2269f341:ou_fb03ecb0a093710baa92b6b98e1e805b": {
+      "user_name": "用户581506",
+      "chat_name": "oc_fd2ea7325bfa6d9b441f36da2269f341"
+    }
+  },
+  "past_id_tracking": true,
+  "version": 1
+}

@@ -14,7 +14,10 @@ Copy-Item .env.example .env
 3. 编辑 `.env`，至少设置：
 - `HOST_PROJECT_DIR`：你要让 Codex 访问的 Windows 本地项目目录（用正斜杠，如 `D:/project_magic/cc-connect`）
 - `HOST_CODEX_HOME`：你本机已有 Codex 配置目录（如 `C:/Users/63576/.codex`）
-- `OPENAI_API_KEY`
+
+说明：
+- 使用本地 Codex 登录态（`HOST_CODEX_HOME` 挂载）时，**不需要** `OPENAI_API_KEY`
+- 仅当你的 `config.toml` 里 provider 使用了 `api_key` 映射时，才需要设置 `OPENAI_API_KEY`
 
 ## 2. 配置 cc-connect
 

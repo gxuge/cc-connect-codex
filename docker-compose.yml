@@ -10,7 +10,6 @@ services:
     init: true
     restart: unless-stopped
     environment:
-      OPENAI_API_KEY: ${OPENAI_API_KEY}
       CODEX_HOME: /root/.codex
       TZ: ${TZ:-Asia/Shanghai}
     volumes:
