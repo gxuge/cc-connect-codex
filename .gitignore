@@ -39,6 +39,7 @@ vendor/
 config.toml
 config.*.toml
 !config.example.toml
+!docker-data/cc-connect/config.toml
 .env
 *.local.toml
 

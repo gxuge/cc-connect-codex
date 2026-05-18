@@ -1,0 +1,26 @@
+language = "zh"
+
+[log]
+level = "debug"
+
+[[projects]]
+name = "codex-docker"
+
+[projects.agent]
+type = "codex"
+
+[projects.agent.options]
+work_dir = "/workspace/project"
+mode = "suggest"
+codex_home = "/root/.codex"
+# model = "gpt-5.3-codex"
+# reasoning_effort = "high"
+
+[[projects.platforms]]
+type = "feishu"
+
+[projects.platforms.options]
+app_id = ""
+app_secret = ""
+# domain = "https://open.feishu.cn"
+enable_feishu_card = false
