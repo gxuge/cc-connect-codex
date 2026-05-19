@@ -40,6 +40,20 @@ Copy-Item docker-data/cc-connect/config.toml.example docker-data/cc-connect/conf
 
 ## 3. 启动
 
+Linux（云服务器）额外步骤（让容器内 Codex 可管理宿主机 Docker）：
+
+```bash
+# 自动写入 docker.sock 的 GID，供 compose 的 group_add 使用
+DOCKER_SOCK_GID=$(stat -c '%g' /var/run/docker.sock)
+export DOCKER_SOCK_GID
+```
+
+或直接一行启动：
+
+```bash
+DOCKER_SOCK_GID="$(stat -c '%g' /var/run/docker.sock)" docker compose up -d --build
+```
+
 ```powershell
 docker compose up -d --build
 ```

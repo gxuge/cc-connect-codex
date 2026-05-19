@@ -12,6 +12,8 @@ services:
     environment:
       CODEX_HOME: /root/.codex
       TZ: ${TZ:-Asia/Shanghai}
+    group_add:
+      - "${DOCKER_SOCK_GID:?Set DOCKER_SOCK_GID from stat -c '%g' /var/run/docker.sock}"
     volumes:
       - type: bind
         source: ./docker-data/cc-connect
@@ -22,6 +24,9 @@ services:
       - type: bind
         source: ${HOST_CODEX_HOME}
         target: /root/.codex
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
     ports:
       - "9820:9820"  # management API / web admin
       - "9810:9810"  # bridge websocket

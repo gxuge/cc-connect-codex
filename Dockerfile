@@ -29,6 +29,7 @@ COPY --from=webbuilder /src/web/dist /src/web/dist
 RUN CGO_ENABLED=0 \
     go build -o /out/cc-connect ./cmd/cc-connect
 
+FROM docker:28-cli AS dockercli
 
 FROM node:22-bookworm-slim AS runtime
 
@@ -44,6 +45,8 @@ RUN npm install -g @openai/codex@${CODEX_CLI_VERSION} \
     && npm cache clean --force
 
 COPY --from=builder /out/cc-connect /usr/local/bin/cc-connect
+COPY --from=dockercli /usr/local/bin/docker /usr/local/bin/docker
+COPY --from=dockercli /usr/local/libexec/docker/cli-plugins/ /usr/local/libexec/docker/cli-plugins/
 
 ENV CODEX_HOME=/root/.codex
 ENV TZ=Asia/Shanghai
