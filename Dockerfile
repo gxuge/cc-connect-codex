@@ -7,7 +7,7 @@ WORKDIR /src/web
 RUN npm install -g pnpm
 
 COPY web/package.json web/pnpm-lock.yaml web/pnpm-workspace.yaml web/.pnpmrc.json ./
-RUN pnpm install --frozen-lockfile --allow-build=esbuild
+RUN pnpm install --frozen-lockfile
 
 COPY web/ ./
 RUN pnpm run build

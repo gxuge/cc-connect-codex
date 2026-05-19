@@ -1,1 +1,5 @@
-onlyBuiltDependencies: esbuild
+strictDepBuilds: false
+allowBuilds:
+  esbuild: true
+onlyBuiltDependencies:
+  - esbuild
