@@ -38,6 +38,15 @@ Copy-Item docker-data/cc-connect/config.toml.example docker-data/cc-connect/conf
 
 注意：模板里 Feishu `app_id/app_secret` 是占位值。正式使用前请替换为你在飞书开放平台创建应用后拿到的真实值。
 
+如果你启用了 Web 管理后台（9820），请先在 `docker-data/cc-connect/config.toml` 填写管理令牌：
+
+```toml
+[management]
+token = "mgmt_2a9f6c4e1d8b7a5c3e0f9b2d6a4c8e1f_7b3d9a1e5c2f6a8d4b0e3f7c1a9d6e2"
+```
+
+登录页面中的 `API 令牌` 就填写这里的 `token` 值。
+
 ## 3. 启动
 
 Linux（云服务器）额外步骤（让容器内 Codex 可管理宿主机 Docker）：
