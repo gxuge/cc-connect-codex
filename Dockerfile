@@ -45,11 +45,17 @@ RUN npm install -g @openai/codex@${CODEX_CLI_VERSION} \
     && npm cache clean --force
 
 COPY --from=builder /out/cc-connect /usr/local/bin/cc-connect
-COPY --from=dockercli /usr/local/bin/docker /usr/local/bin/docker
-COPY --from=dockercli /usr/local/libexec/docker/cli-plugins/ /usr/local/libexec/docker/cli-plugins/
+COPY --from=dockercli /usr/local/bin/docker /usr/bin/docker
+COPY --from=dockercli /usr/local/libexec/docker/cli-plugins/ /usr/libexec/docker/cli-plugins/
+
+# Keep docker discoverable in both standard and /usr/local paths.
+RUN ln -sf /usr/bin/docker /usr/local/bin/docker \
+    && mkdir -p /usr/local/libexec/docker/cli-plugins \
+    && ln -sf /usr/libexec/docker/cli-plugins/docker-compose /usr/local/libexec/docker/cli-plugins/docker-compose
 
 ENV CODEX_HOME=/root/.codex
 ENV TZ=Asia/Shanghai
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 RUN mkdir -p /root/.cc-connect /root/.codex /workspace/project
 
