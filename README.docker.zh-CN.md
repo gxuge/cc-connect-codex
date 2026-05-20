@@ -86,6 +86,7 @@ codex --version
 - 容器内配置目录：`/root/.cc-connect`（映射到 `./docker-data/cc-connect`）
 - 容器内 Codex 目录：`/root/.codex`（映射到 `HOST_CODEX_HOME`）
 - 容器内项目目录：`/workspace/project`（映射到 `HOST_PROJECT_DIR`）
+- 容器内宿主机目录：`/host`（映射到 `HOST_SERVER_ROOT`，默认 `/`）
 
 说明：
 - 现在容器会直接读写你本机的 `.codex`，因此配置、登录态、会话历史可直接复用。

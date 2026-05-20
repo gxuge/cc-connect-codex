@@ -25,6 +25,9 @@ services:
         source: ${HOST_CODEX_HOME}
         target: /root/.codex
       - type: bind
+        source: ${HOST_SERVER_ROOT:-/}
+        target: /host
+      - type: bind
         source: /var/run/docker.sock
         target: /var/run/docker.sock
     ports:
